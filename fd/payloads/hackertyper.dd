@@ -1,0 +1,29 @@
+REM Linux run dialog
+ALT F2
+DELAY 200
+REM Mac OS run dialog
+GUI SPACE
+DELAY 200
+REM On Windows this changes the input language, so press 3 times
+GUI SPACE
+DELAY 200
+GUI SPACE
+DELAY 200
+GUI r
+DELAY 200
+REM On another OS, this could have typed "   r". Backspace 4 times.
+DELETE
+REPEAT 4
+REM Type in URL and open page!
+STRING https://hackertyper.com
+ENTER
+REM go Fullscreen
+DELAY 2000
+F11
+REM type anything to show code
+r
+REPEAT 600
+DELAY 100
+REM show "Access Granted"
+ALT
+REPEAT 3

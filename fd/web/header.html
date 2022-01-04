@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FeatherS2 Ducky</title>
+		<meta name="description" content="FeatherS2 Ducky" />
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=0.8, minimal-ui"
+		/>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script src="script.js"></script>
+	</head>
+	<body onload="init()">
+		<div id="wrapper">
+			<div id="mobile_navigation">
+				<ul>
+					<li><a href="#navigation">Payloads</a></li>
+					<li><a href="#content">Editor</a></li>
+				</ul>
+			</div>
+
+			<div id="navigation">
+				<h3>Payloads</h3>
+				<ul id="payloadList" class="payloads"></ul>
+				<hr />
+				<h3>Statistics</h3>
+				<div id="statistics">
+					<table>
+						<tr>
+							<th colspan="2">Board</th>
+						</tr>
+						<tr>
+							<td>Board</td>
+							<td id="board_name" class="align_right"></td>
+						</tr>
+						<tr>
+							<td>Chip</td>
+							<td id="chip_name" class="align_right"></td>
+						</tr>
+						<tr>
+							<td>CircuitPython</td>
+							<td
+								id="circuitpython_version"
+								class="align_right"
+							></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td
+								id="circuitpython_version_full"
+								class="align_right"
+							></td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<th colspan="3">Memory</th>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td id="memory_total" class="align_right"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Used</td>
+							<td id="memory_used" class="align_right"></td>
+							<td
+								id="memory_used_percentage"
+								class="align_right"
+							></td>
+						</tr>
+						<tr>
+							<td>Available</td>
+							<td id="memory_available" class="align_right"></td>
+							<td
+								id="memory_available_percentage"
+								class="align_right"
+							></td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<th colspan="3">Storage</th>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td id="storage_total" class="align_right"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Used</td>
+							<td id="storage_used" class="align_right"></td>
+							<td
+								id="storage_used_percentage"
+								class="align_right"
+							></td>
+						</tr>
+						<tr>
+							<td>Available</td>
+							<td id="storage_available" class="align_right"></td>
+							<td
+								id="storage_available_percentage"
+								class="align_right"
+							></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

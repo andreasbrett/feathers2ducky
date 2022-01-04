@@ -1,0 +1,200 @@
+* {
+	font-family: sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+	color: hsl(210, 65%, 65%);
+}
+
+h1,
+h2,
+h3 {
+	margin: 1.25rem 0 0.75rem;
+}
+
+h1 {
+	font-size: 1.5rem;
+}
+
+h2 {
+	font-size: 1.25rem;
+}
+
+h3 {
+	font-size: 1rem;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid #888;
+}
+
+#statistics table {
+	font-size: 0.7rem;
+	margin-top: 1rem;
+	width: 100%;
+}
+
+#statistics table tr th {
+	font-weight: bold;
+	text-align: left;
+	text-decoration: underline;
+	padding: 0.3rem 0;
+}
+
+#statistics table tr td {
+	vertical-align: baseline;
+	padding: 0.1rem 0.1rem;
+}
+
+#wrapper {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#mobile_navigation {
+	display: none;
+}
+
+#navigation,
+#content {
+	display: block;
+	position: relative;
+	margin: 10px 0 10px 10px;
+	padding: 10px;
+}
+
+#navigation {
+	background-color: hsl(230, 0%, 90%);
+	width: 200px;
+	float: left;
+	overflow: auto;
+}
+
+#content {
+	background-color: hsl(230, 0%, 90%);
+	width: calc(100% - 270px);
+	float: left;
+}
+
+#statistics {
+	font-size: 0.8rem;
+}
+
+@media (max-width: 800px) {
+	#mobile_navigation {
+		display: block;
+		position: fixed;
+		z-index: 999;
+		width: 100%;
+		height: 1.5rem;
+		line-height: 1.75rem;
+		top: 0px;
+		margin: 0;
+		padding: 10px;
+		background-color: hsl(230, 0%, 30%);
+		color: #fff;
+	}
+
+	#mobile_navigation ul {
+		list-style: none;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0;
+	}
+
+	#mobile_navigation li {
+		width: 50%;
+		display: block;
+		float: left;
+		text-align: center;
+	}
+
+	#mobile_navigation a {
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	#wrapper {
+		margin-top: 58px;
+	}
+
+	#navigation {
+		width: calc(100% - 40px);
+		height: 200px;
+		float: none;
+	}
+
+	#content {
+		width: calc(100% - 40px);
+		float: none;
+	}
+}
+
+#payloadList {
+	list-style: none;
+	padding-left: 0.35rem;
+}
+
+#payloadList li {
+	display: block;
+	font-size: 0.8rem;
+	padding: 0.25rem;
+}
+
+#payloadCode,
+#payloadResult {
+	border: 1px solid #888;
+	width: calc(100% - 1.1rem);
+	padding: 0.5rem;
+	height: 20rem;
+	overflow: auto;
+	font-family: monospace;
+	font-size: 0.85rem;
+	line-height: 1.5rem;
+}
+
+.notification {
+	display: none;
+	color: #fff;
+	font-size: 0.7rem;
+	margin: 1rem 0;
+	padding: 0.45rem;
+}
+
+.background_green {
+	display: block;
+	background-color: hsl(150, 75%, 45%);
+}
+
+.background_gray {
+	display: block;
+	background-color: hsl(0, 0%, 75%);
+}
+
+.background_red {
+	display: block;
+	background-color: hsl(0, 75%, 45%);
+}
+
+.green {
+	color: hsl(150, 75%, 45%);
+}
+
+.red {
+	color: hsl(0, 75%, 45%);
+}
+
+.align_right {
+	text-align: right;
+}

@@ -1,0 +1,10 @@
+GUI r
+DELAY 100
+STRING cmd
+ENTER
+DELAY 250
+STRING color FE
+ENTER
+DELAY 100
+STRING mode con:cols=18 lines=1
+ENTER

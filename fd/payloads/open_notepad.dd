@@ -1,0 +1,5 @@
+GUI r
+DELAY 100
+STRING notepad
+ENTER
+DELAY 500

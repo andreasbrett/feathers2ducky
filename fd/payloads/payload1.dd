@@ -1,0 +1,6 @@
+REM wait for pico-ducky to be mounted by Windows
+DELAY 1000
+REM run open_notepad payload
+IMPORT fd/payloads/open_notepad.dd
+REM enter some text
+STRING this is payload1.dd

