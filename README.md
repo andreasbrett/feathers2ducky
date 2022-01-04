@@ -52,16 +52,18 @@ Install and have your USB Rubber Ducky working in just a couple of minutes.
    - place `boot.py`, `main.py` to the root of your FeatherS2
    - copy the `fd` folder to the root of your FeatherS2
 8. Unplug and re-plug the FeatherS2 so it will reconnect as `_` (this drive label can be configured) and reboot into [web-server mode](#webserver_mode).
-9. Connect to the spawned Wifi Hotspot **FeatherS2Ducky** and navigate to `http://192.168.4.1` to control your feathers2ducky.
+9. Connect to the spawned Wifi Hotspot **FeatherS2Ducky** using password `feathers2ducky`
+10. Navigate to `http://192.168.4.1` and authenticate with user `feather` and password `ducky` to control your feathers2ducky.
 
 ### Configuration
 Many of the feathers2ducky settings can be configured. If you want to change the default settings use template `fd\config_default.py` and save a modified version with your changes as `fd\config.py`.
 
 You can heavily customize your feathers2ducky here by e.g.
-- changing it's MAC address
+- enabling or disabling HTTP authentication for the web interface (you definitely want that on when it's connected to an existing Wifi)
+- changing its MAC address
 - changing the Wifi channel to reduce interference
 - letting it connect to an existing Wifi rather than spawning a hotspot
-- disabling the Wifi feature altogther turning it into a plain USB rubber ducky
+- disabling the Wifi feature altogether turning it into a plain USB rubber ducky
 
 The [configuration file](fd/config_default.py) is thoroughly documented through comments for each parameter. Instead of documenting this here, I opted to document it where it would be needed in the first place.
 

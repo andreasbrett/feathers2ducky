@@ -36,7 +36,7 @@ except ImportError:
 
 from fd.consumerControlCommands import consumerControlCommands
 from fd.duckyCommands import duckyCommands
-from fd.htmlHeaders import headersCss, headersHtml, headersJs, headersJson
+from fd.htmlHeaders import headersAuth, headersCss, headersHtml, headersJs, headersJson
 from fd.mouseButtons import mouseButtons
 from fd.unquote import unquote_plus
 
@@ -573,17 +573,40 @@ def writeFile(filename, content):
         print("Error trying to write file: ", filename)
         return False
 
+
 def htmlHeader():
     return readFile("fd/web/header.html")
 
 
-def htmlFooter(request=None):
+def htmlFooter():
     return readFile("fd/web/footer.html")
+
+
+def checkAuthorization(request):
+    # don't ask for credentials when disabled
+    if config["webserver"]["credentials"] is None:
+        return False
+
+    # 'authorization' header present?
+    if "authorization" in request.headers.keys():
+
+        # derive credentials from authorization header
+        credentialsBase64 = request.headers["authorization"].replace("Basic ", "")
+        credentials = binascii.a2b_base64(credentialsBase64).decode().split(":")
+
+        # compare username and password
+        if credentials[0] == config["webserver"]["credentials"]["username"] and credentials[1] == config["webserver"]["credentials"]["password"]:
+            return False
+
+    return (401, headersAuth, "")
 
 
 @ampule.route("/")
 def light_set(request):
     debugRequest(request)
+
+    if requiresAuthorization := checkAuthorization(request):
+        return requiresAuthorization
 
     html = htmlHeader()
     html += readFile("fd/web/content.html")
@@ -594,6 +617,10 @@ def light_set(request):
 @ampule.route("/script.js")
 def light_set(request):
     debugRequest(request)
+
+    if requiresAuthorization := checkAuthorization(request):
+        return requiresAuthorization
+
     content = readFile("fd/web/script.js")
     return (200, headersJs, content)
 
@@ -601,12 +628,20 @@ def light_set(request):
 @ampule.route("/style.css")
 def light_set(request):
     debugRequest(request)
+
+    if requiresAuthorization := checkAuthorization(request):
+        return requiresAuthorization
+
     content = readFile("fd/web/style.css")
     return (200, headersCss, content)
 
 
 @ampule.route("/api/statistics")
 def light_set(request):
+    debugRequest(request)
+
+    if requiresAuthorization := checkAuthorization(request):
+        return requiresAuthorization
 
     # board
     board_name = os.uname().machine
@@ -665,6 +700,11 @@ def light_set(request):
 
 @ampule.route("/api/fetchPayloads")
 def light_set(request):
+    debugRequest(request)
+
+    if requiresAuthorization := checkAuthorization(request):
+        return requiresAuthorization
+
     payloads = []
     files = os.listdir("fd/payloads")
     payloads = [f for f in files if f.endswith(".dd")]
@@ -673,6 +713,11 @@ def light_set(request):
 
 @ampule.route("/api/loadPayload")
 def light_set(request):
+    debugRequest(request)
+
+    if requiresAuthorization := checkAuthorization(request):
+        return requiresAuthorization
+
     if "file" in request.params.keys():
         file = request.params["file"]
         payload = readFile(f"fd/payloads/{file}")
@@ -685,6 +730,11 @@ def light_set(request):
 @ampule.route("/api/runPayload", method="POST")
 def light_set(request):
     global duckyScriptResult
+
+    debugRequest(request)
+
+    if requiresAuthorization := checkAuthorization(request):
+        return requiresAuthorization
 
     params_post = getPostParams(request)
 
@@ -701,6 +751,11 @@ def light_set(request):
 
 @ampule.route("/api/savePayload", method="POST")
 def light_set(request):
+
+    debugRequest(request)
+
+    if requiresAuthorization := checkAuthorization(request):
+        return requiresAuthorization
 
     params_post = getPostParams(request)
 
@@ -803,6 +858,7 @@ def runWebserver():
             password=config["wifi"]["spawnAP"]["password"],
             channel=config["wifi"]["spawnAP"]["channel"],
         )
+        print(" - Wifi Secret:", config["wifi"]["spawnAP"]["password"])
         print(" - Hostname:   ", wifi.radio.hostname)
         print(" - IP Address: ", wifi.radio.ipv4_address_ap)
         print(
@@ -839,6 +895,12 @@ def runWebserver():
     socket = pool.socket()
     socket.bind(["0.0.0.0", config["webserver"]["port"]])
     socket.listen(1)
+
+    if config["webserver"]["credentials"] is None:
+        print(" - no credentials required")
+    else:
+        print(f" - Username: {config['webserver']['credentials']['username']}")
+        print(f" - Password: {config['webserver']['credentials']['password']}")
 
     # webserver listen loop
     while True:

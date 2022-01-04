@@ -33,6 +33,11 @@ config = {
         "hostname": "feathers2ducky",
         # which port should be used
         "port": 80,
+        # login credentials (set to None to disable authentication)
+        "credentials": {
+            "username": "feather",
+            "password": "ducky",
+        },
         # print out debugging information about HTTP requests on serial
         "debugRequests": {
             "enabled": False,
