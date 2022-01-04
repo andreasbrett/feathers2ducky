@@ -84,7 +84,7 @@ To change the keyboard layout from the default DE keyboard, you will have to:
 
 ## Operation Modes
 
-<img src="https://www.wemos.cc/en/latest/_static/boards/s2_pico_v1.0.0_4_16x9.png" alt="Lolin S2 Pico Pinout" title="Lolin S2 Pico Pinout" width="75%" />
+<img src="https://www.wemos.cc/en/latest/_static/boards/s2_pico_v1.0.0_4_16x9.png" alt="Lolin S2 Pico Pinout" title="Lolin S2 Pico Pinout" />
 
 **Note:** To toggle between modes you will have to connect a specific pin to the ground pin (marked `GND` in the pinout diagram above). I will call this "grounding" throughout this documentation.
 
