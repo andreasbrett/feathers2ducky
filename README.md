@@ -47,11 +47,12 @@ Install and have your USB Rubber Ducky working in just a couple of minutes.
 5. Download `adafruit-circuitpython-displayio-ssd1306-7.x-mpy-x.x.x.zip` [here](https://github.com/adafruit/Adafruit_CircuitPython_DisplayIO_SSD1306/releases/latest) and extract it outside of the device.
    - Navigate to `lib` of the recently extracted folder
    - Copy the file `adafruit_displayio_ssd1306.mpy` to the `lib` folder on your FeatherS2.
-6. From this repo:
-   - copy `ampule.py` to the `lib` folder on your FeatherS2
-   - place `boot.py`, `main.py` and the `fd` folder to the root of your FeatherS2
-10. Unplug and re-plug the FeatherS2 so it will reconnect as `_` (this drive label can be configured) and reboot into [web-server mode](#webserver_mode).
-11. Connect to the spawned Wifi Hotspot **FeatherS2Ducky** and navigate to `http://192.168.4.1` to control your feathers2ducky.
+6. Download `ampule.py` [here](https://github.com/andreasbrett/ampule/blob/patch-2/ampule.py) and copy it to the `lib`folder on your FeatherS2.
+7. From this repo:
+   - place `boot.py`, `main.py` to the root of your FeatherS2
+   - copy the `fd` folder to the root of your FeatherS2
+8. Unplug and re-plug the FeatherS2 so it will reconnect as `_` (this drive label can be configured) and reboot into [web-server mode](#webserver_mode).
+9. Connect to the spawned Wifi Hotspot **FeatherS2Ducky** and navigate to `http://192.168.4.1` to control your feathers2ducky.
 
 ### Configuration
 Many of the feathers2ducky settings can be configured. If you want to change the default settings use template `fd\config_default.py` and save a modified version with your changes as `fd\config.py`.
@@ -192,6 +193,8 @@ Apart from major refactoring, additions to the original code are as follows:
 ## Thanks and appreciations
 
 Thanks to [dbisu](https://github.com/dbisu) and his awesome [pico-ducky](https://github.com/dbisu/pico-ducky) and [feathers2-ducky](https://github.com/dbisu/feathers2-ducky) projects that this is heavily based on. 
+
+Thanks to [John Ellis](https://github.com/deckerego) for his tiny webserver for CircuitPython [ampule](https://github.com/deckerego/ampule).
 
 Thanks to [Jim Bennett](https://github.com/jimbobbennett) for his [UrlParse library for CircuitPython](https://github.com/jimbobbennett/CircuitPython_Parse). I have [extracted some code](fd/unquote.py) from it to urldecode HTTP POST payloads.
 
