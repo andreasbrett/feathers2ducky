@@ -121,6 +121,7 @@ Apart from major refactoring, additions to the original code are as follows:
 - allows running a mouse jiggler when grounding `IO17` (see Hak5 presentation: https://www.youtube.com/watch?v=aZ8u56I3J3I)
 - includes some basic duckyscripts to get you started in folder `fd`
 
+<a name="mods_duckyscript"></a>
 ### Changes to the Ducky Script language
 
 - let duckyscript wait for presence of a Wifi Access Point through e.g. `WAITFORWIFI MyPhoneHotspot`
@@ -172,3 +173,21 @@ Apart from major refactoring, additions to the original code are as follows:
   - `PSYCHOMOUSE 12 300` moves mouse every 12 chars in a range of +/- 300 pixels
   - `PSYCHOMOUSE OFF` disables psycho-mouse mode
   - <strong>note:</strong> typing performance reduces by roughly 15-20% with the default values
+
+## Thanks and appreciations
+
+Thanks to [dbisu](https://github.com/dbisu) and his awesome [pico-ducky](https://github.com/dbisu/pico-ducky) and [feathers2-ducky](https://github.com/dbisu/feathers2-ducky) projects that this is heavily based on. 
+
+Thanks to [Jim Bennett](https://github.com/jimbobbennett) for his [UrlParse library for CircuitPython](https://github.com/jimbobbennett/CircuitPython_Parse). I have [extracted some code](fd/unquote.py) from it to urldecode HTTP POST payloads.
+
+## More info and the USB Rubber Ducky, Duckyscript and the Pico-Ducky
+
+[pico-ducky tutorial by **NetworkChuck**](https://www.youtube.com/watch?v=e_f9p-_JWZw)
+
+[USB Rubber Ducky playlist by **Hak5**](https://www.youtube.com/playlist?list=PLW5y1tjAOzI0YaJslcjcI4zKI366tMBYk)
+
+[Ducky Script manual](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Duckyscript) (without the [mods](#mods_duckyscript) introduced with this fork)
+
+[Mouse Jiggler as presented by Hak5](https://www.youtube.com/watch?v=aZ8u56I3J3I)
+
+[Hak5's CircuitPython Rubber Ducky](https://www.youtube.com/watch?v=HKdLJapPD1c) (technical)
