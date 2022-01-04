@@ -1,4 +1,20 @@
-# feathers2ducky
+<h1 align="center">feathers2ducky</h1>
+
+<div align="center">
+  <strong>Wifi controlled USB Rubber Ducky on a FeatherS2 board</strong>
+</div>
+
+<br />
+
+<div align="center">
+  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/andreasbrett/feathers2ducky">
+  <img alt="GitHub license" src="https://img.shields.io/github/license/andreasbrett/feathers2ducky">
+  <a href="https://github.com/dbisu/pico-ducky/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/andreasbrett/feathers2ducky"></a>
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/andreasbrett/feathers2ducky">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/andreasbrett/feathers2ducky">
+</div>
+
+<br />
 
 <img src="images/web-ui.jpg" alt="Web Interface" title="Web Interface" width="300" align="right" />
 
@@ -18,7 +34,6 @@ Main Features
 The code in this repo is tested to work with the [Lolin S2 Pico](https://circuitpython.org/board/lolin_s2_pico/). It should also work with the [Lolin S2 Mini](https://circuitpython.org/board/lolin_s2_mini/) if you disable the display through the configuration.
 
 Check out what [modifications](#mods) this fork provides.
-
 
 ## Installation
 Install and have your USB Rubber Ducky working in just a couple of minutes.
