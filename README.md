@@ -34,7 +34,7 @@ Install and have your USB Rubber Ducky working in just a couple of minutes.
    - Copy the file `adafruit_displayio_ssd1306.mpy` to the `lib` folder on your FeatherS2.
 6. From this repo:
    - copy `ampule.py` to the `lib` folder on your FeatherS2
-   - place `boot.py` and `main.py` to the root folder of your FeatherS2
+   - place `boot.py`, `main.py` and the `fd` folder to the root of your FeatherS2
 10. Unplug and re-plug the FeatherS2 so it will reconnect as `_` (this drive label can be configured) and reboot into [web-server mode](#webserver_mode).
 11. Connect to the spawned Wifi Hotspot **FeatherS2Ducky** and navigate to `http://192.168.4.1` to control your feathers2ducky.
 
