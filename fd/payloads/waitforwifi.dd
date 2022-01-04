@@ -1,4 +1,4 @@
-REM wait for pico-ducky to be mounted by Windows
+REM wait for ducky to be mounted by Windows
 DELAY 1000
 REM wait for Wifi access point to be present
 WAITFORWIFI John Smith's iPhone
