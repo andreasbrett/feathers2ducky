@@ -188,6 +188,6 @@ Thanks to [Jim Bennett](https://github.com/jimbobbennett) for his [UrlParse libr
 
 [Ducky Script manual](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Duckyscript) (without the [mods](#mods_duckyscript) introduced with this fork)
 
-[Mouse Jiggler as presented by Hak5](https://www.youtube.com/watch?v=aZ8u56I3J3I)
+[Mouse Jiggler as presented by **Hak5**](https://www.youtube.com/watch?v=aZ8u56I3J3I)
 
-[Hak5's CircuitPython Rubber Ducky](https://www.youtube.com/watch?v=HKdLJapPD1c) (technical)
+[**Hak5**'s CircuitPython Rubber Ducky](https://www.youtube.com/watch?v=HKdLJapPD1c) (technical)
