@@ -12,6 +12,7 @@ headersHtml = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST",
     "Access-Control-Allow-Headers": "Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token",
+    "Cache-Control": "public, max-age=14400",
 }
 
 headersJs = {
@@ -19,6 +20,7 @@ headersJs = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST",
     "Access-Control-Allow-Headers": "Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token",
+    "Cache-Control": "public, max-age=14400",
 }
 
 headersCss = {
@@ -26,6 +28,7 @@ headersCss = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST",
     "Access-Control-Allow-Headers": "Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token",
+    "Cache-Control": "public, max-age=14400",
 }
 
 headersJson = {
