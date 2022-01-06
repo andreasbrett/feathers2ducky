@@ -9,7 +9,7 @@
 <div align="center">
   <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/andreasbrett/feathers2ducky">
   <img alt="GitHub license" src="https://img.shields.io/github/license/andreasbrett/feathers2ducky">
-  <a href="https://github.com/dbisu/pico-ducky/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/andreasbrett/feathers2ducky"></a>
+  <a href="https://github.com/andreasbrett/feathers2ducky/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/andreasbrett/feathers2ducky"></a>
   <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/andreasbrett/feathers2ducky">
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/andreasbrett/feathers2ducky">
 </div>
@@ -20,7 +20,7 @@
 
 **USB Rubber Ducky for FeatherS2 boards - controlled via Wifi**
 
-This implementation is based on [my fork](https://github.com/andreasbrett/pico-ducky) of the awesome [pico-ducky by dbisu](https://github.com/dbisu/feathers2-ducky).
+This implementation is based on [my fork](https://github.com/andreasbrett/pico-ducky) of the awesome [pico-ducky by dbisu](https://github.com/dbisu/pico-ducky).
 
 Main Features
 - inject keyboard actions
