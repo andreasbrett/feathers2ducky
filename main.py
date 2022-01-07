@@ -1,6 +1,17 @@
 # License : GPLv2.0
 # copyright (c) 2021  Dave Bailey
 # Author: Dave Bailey (dbisu, @daveisu)
+#
+# Fork: Andreas Brett @andreasbrett
+#  - major refactoring
+#  - extended duckyscript language
+#  - dynamic locale switching
+#  - mouse and media key injection
+#  - externalized configuration to customize ducky easily
+#  - spawn new or connect to existing AP
+#  - responsive web ui
+#  - detailed debugging through serial monitor
+#  - display support
 
 import binascii
 import gc
