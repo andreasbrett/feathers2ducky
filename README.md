@@ -1,4 +1,6 @@
-<h1 align="center">feathers2ducky</h1>
+<img src="images/feathers2ducky.png" alt="FeatherS2 Ducky" title="FeatherS2 Ducky" />
+
+<h1 align="center"> </h1>
 
 <div align="center">
   <strong>Wifi controlled USB Rubber Ducky on a FeatherS2 board</strong>
@@ -16,7 +18,7 @@
 
 <br />
 
-<img src="images/web-ui.jpg" alt="Web Interface" title="Web Interface" width="300" align="right" />
+<img src="images/web-ui.png" alt="Web Interface" title="Web Interface" width="300" align="right" />
 
 **USB Rubber Ducky for FeatherS2 boards - controlled via Wifi**
 
