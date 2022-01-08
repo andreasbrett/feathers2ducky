@@ -1,5 +1,6 @@
 .vscode/*
 fd/__pycache__/*
 fd/config.py
+lib/*
 System Volume Information/*
 boot_out.txt
