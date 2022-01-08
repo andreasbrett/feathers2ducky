@@ -21,6 +21,7 @@ import random
 import re
 import time
 
+import ampule
 import socketpool
 import storage
 import usb_hid
@@ -33,8 +34,6 @@ from adafruit_hid.keycode import Keycode
 from adafruit_hid.mouse import Mouse
 from board import *
 from digitalio import DigitalInOut, Direction, Pull
-
-import ampule
 
 # import configuration
 try:
@@ -50,7 +49,6 @@ from fd.duckyCommands import duckyCommands
 from fd.htmlHeaders import headersAuth, headersCss, headersHtml, headersJs, headersJson
 from fd.mouseButtons import mouseButtons
 from fd.unquote import unquote_plus
-
 
 # -----------------------------------------------------------------------------------------------------
 # Ducky Script Processing / HID Injection
@@ -460,6 +458,22 @@ def processLine(line):
 
     elif tokens[0] == "WAITFORWIFI":
         waitForWifiAP(joinTokens(tokens, 1))
+
+    elif tokens[0] == "WAITFORLED":
+        ledCodes = {
+            "CAPS_LOCK": Keyboard.LED_CAPS_LOCK,
+            "COMPOSE": Keyboard.LED_COMPOSE,
+            "NUM_LOCK": Keyboard.LED_NUM_LOCK,
+            "SCROLL_LOCK": Keyboard.LED_SCROLL_LOCK,
+        }
+        ledCode = ledCodes[tokens[1].upper()]
+        ledState = (tokens[2].upper() == "ON")
+
+        myprint(f"Waiting for {tokens[1].upper()} LED to be {tokens[2].lower()}...")
+        while True:
+            if kbd.led_on(ledCode) == ledState:
+                break
+            delay(0.1)
 
     # no recognized special command => just run the converted keycodes
     else:
