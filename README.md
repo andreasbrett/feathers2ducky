@@ -51,7 +51,7 @@ Install and have your USB Rubber Ducky working in just a couple of minutes.
 5. Download `adafruit-circuitpython-displayio-ssd1306-7.x-mpy-x.x.x.zip` [here](https://github.com/adafruit/Adafruit_CircuitPython_DisplayIO_SSD1306/releases/latest) and extract it outside of the device.
     - Navigate to `lib` of the recently extracted folder
     - Copy the file `adafruit_displayio_ssd1306.mpy` to the `lib` folder on your FeatherS2.
-6. Download `ampule.py` [here](https://github.com/andreasbrett/ampule/blob/patch-2/ampule.py) and copy it to the `lib`folder on your FeatherS2.
+6. Download `ampule.py` [here](https://github.com/deckerego/ampule/blob/main/ampule.py) and copy it to the `lib`folder on your FeatherS2.
 7. From this repo:
     - place `boot.py`, `main.py` to the root of your FeatherS2
     - copy the `fd` folder to the root of your FeatherS2
