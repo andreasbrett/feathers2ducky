@@ -48,7 +48,7 @@ from fd.consumerControlCommands import consumerControlCommands
 from fd.duckyCommands import duckyCommands
 from fd.htmlHeaders import headersAuth, headersCss, headersHtml, headersJs, headersJson
 from fd.mouseButtons import mouseButtons
-from fd.unquote import unquote_plus
+from fd.unquote import unquote
 
 # -----------------------------------------------------------------------------------------------------
 # Ducky Script Processing / HID Injection
@@ -549,6 +549,20 @@ def processDuckyScript(duckyScriptPath, duckyScript=None, initialCall=True):
 # Web Server
 # -----------------------------------------------------------------------------------------------------
 
+
+def encodeForTransport(s):
+    s = s.encode("utf-8")
+    s = binascii.b2a_base64(s)
+    return s
+
+
+def decodeFromTransport(s):
+    s = unquote(s)
+    s = binascii.a2b_base64(s)
+    s = s.decode("utf-8")
+    return s
+
+
 def debugRequest(request):
     if config["webserver"]["debugRequests"]["enabled"]:
         print("[REQUEST]", request.path)
@@ -765,10 +779,11 @@ def light_set(request):
 
     duckyScriptResult = ""
     processDuckyScript(
-        duckyScriptPath=None, duckyScript=unquote_plus(params_post["payload"])
+        duckyScriptPath=None, duckyScript=decodeFromTransport(params_post["payload"])
     )
+
     result = {
-        "result": duckyScriptResult,
+        "result": encodeForTransport(duckyScriptResult),
         "notification": "Script ran successfully. See script output below.",
     }
     return (200, headersJson, json.dumps(result))
@@ -784,8 +799,8 @@ def light_set(request):
 
     params_post = getPostParams(request)
 
-    filename = f"fd/payloads/{unquote_plus(params_post["filename"])}"
-    content = unquote_plus(params_post["payload"])
+    filename = f"fd/payloads/{decodeFromTransport(params_post["filename"])}"
+    content = decodeFromTransport(params_post["payload"])
 
     try:
         # remount with write permissions

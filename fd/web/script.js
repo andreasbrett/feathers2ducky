@@ -1,5 +1,28 @@
 "use strict";
 
+function encodeForTransport(s) {
+	// convert to UTF-8
+	s = unescape(encodeURIComponent(s));
+
+	// make base64
+	s = btoa(s);
+
+	// encodeURIComponent
+	s = encodeURIComponent(s);
+
+	return s;
+}
+
+function decodeFromTransport(s) {
+	// decode base64
+	s = atob(s);
+
+	// convert from UTF-8
+	s = decodeURIComponent(escape(s));
+
+	return s;
+}
+
 function E(id) {
 	return document.getElementById(id);
 }
@@ -116,7 +139,7 @@ function runPayload() {
 
 			let eResult = E("payloadResult");
 			let eNotification = E("payloadNotification");
-			eResult.value = response.result;
+			eResult.value = decodeFromTransport(response.result);
 			eNotification.innerText = response.notification;
 			eNotification.setAttribute(
 				"class",
@@ -132,7 +155,7 @@ function runPayload() {
 
 	const eCode = E("payloadCode");
 	const eResult = E("payloadResult");
-	const postParams = "payload=" + eCode.value;
+	const postParams = "payload=" + encodeForTransport(eCode.value);
 
 	document.body.style.cursor = "progress";
 	eCode.disabled = true;
@@ -192,7 +215,10 @@ function savePayload() {
 	const eCode = E("payloadCode");
 	const eNotification = E("payloadNotification");
 	const postParams =
-		"filename=" + eFilename.innerText + "&payload=" + eCode.value;
+		"filename=" +
+		encodeForTransport(eFilename.innerText) +
+		"&payload=" +
+		encodeForTransport(eCode.value);
 
 	document.body.style.cursor = "progress";
 	eCode.disabled = true;
