@@ -163,6 +163,8 @@ Apart from major refactoring, additions to the original code are as follows:
     -   perfectly time injections
 -   importing other payloads through e.g. `IMPORT filename.dd`
 -   setting keyboard locale **at runtime** through e.g. `LOCALE DE` (which would load `keyboard_layout_win_de` and `keycode_win_de` from the libs folder).
+-   type a string and finalize with a carriage return (ENTER)
+    -   `STRINGLN some text with a carriage return at the end`
 -   wait for keyboard LED to be on or off
     -   `WAITFORLED CAPS_LOCK ON`
     -   `WAITFORLED NUM_LOCK OFF`

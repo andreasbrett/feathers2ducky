@@ -399,6 +399,11 @@ def processLine(line):
     elif tokens[0] == "STRING":
         typeString(joinTokens(tokens, 1))
 
+    # output a string with carriage return directly
+    elif tokens[0] == "STRINGLN":
+        typeString(joinTokens(tokens, 1))
+        performKeyboardAction(convertLineToKeycodes("ENTER"))
+
     # print out statement
     elif tokens[0] == "PRINT":
         myprint(f"[SCRIPT]: {joinTokens(tokens, 1)}")
