@@ -766,7 +766,7 @@ def light_set(request):
         file = request.params["file"]
         payload = readFile(f"fd/payloads/{file}")
         if payload:
-            return (200, headersJson, json.dumps({"payload": payload}))
+            return (200, headersJson, json.dumps({"payload": encodeForTransport(payload)}))
 
     return (404, headersJson, json.dumps({"error": "file not found"}))
 

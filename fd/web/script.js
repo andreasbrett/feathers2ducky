@@ -114,7 +114,7 @@ function loadPayload(filename) {
 		if (xhr.status == 200 && xhr.readyState == 4) {
 			const response = JSON.parse(xhr.responseText);
 			let eCode = E("payloadCode");
-			eCode.value = response.payload;
+			eCode.value = decodeFromTransport(response.payload);
 			let eFilename = E("payloadFilename");
 			eFilename.innerText = "file: " + filename;
 			eFilename.setAttribute("class", "notification background_gray");
