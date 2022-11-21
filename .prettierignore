@@ -1,0 +1,2 @@
+# ignore webserver HTML
+fd/web/*.html
