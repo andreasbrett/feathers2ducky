@@ -73,6 +73,8 @@ config = {
         "waitDelay": 500,
         # how many re-checks to perform before starting webserver (if enabled)
         "waitCycles": 60,
+        # auto-restart FeatherS2Ducky when changes are written to its storage (you can Ctrl+C and Ctrl+D in REPL to restart)
+        "autoRestartOnTouch": False,
     },
     # stealth mode settings
     "stealth": {

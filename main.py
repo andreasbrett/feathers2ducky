@@ -980,6 +980,10 @@ def importDisplay():
         return _func
 
 
+# disable CircuitPython auto-restart feature
+if not config["usbConnection"]["autoRestartOnTouch"]:
+    supervisor.disable_autoreload()
+
 # dynamically import display lib (if enabled)
 displayTextLine = importDisplay()
 
