@@ -97,11 +97,39 @@ function fetchStatistics() {
 			E("memory_available_percentage").innerText =
 				m.relative.available + m.relative.unit_of_measurement;
 
+			if (response.usb_connected) {
+				E("usb_hid_connection").style.display = "none";
+				if (pollUsbHid) {
+					clearInterval(pollUsbHid);
+					pollUsbHid = null;
+				}
+			} else {
+				E("usb_hid_connection").style.display = "block";
+				pollUsbHid = setInterval(checkUsbHid, 2500);
+			}
+
 			document.body.style.cursor = "default";
 		}
 	};
 
 	document.body.style.cursor = "progress";
+	xhr.send();
+}
+
+function checkUsbHid() {
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", "/api/checkUsbHid");
+	xhr.responseType = "";
+
+	xhr.onreadystatechange = () => {
+		if (xhr.status == 200 && xhr.readyState == 4) {
+			const response = JSON.parse(xhr.responseText);
+			if (response.result) {
+				fetchStatistics();
+			}
+		}
+	};
+
 	xhr.send();
 }
 
@@ -231,3 +259,5 @@ function init() {
 	fetchPayloads();
 	fetchStatistics();
 }
+
+let pollUsbHid;

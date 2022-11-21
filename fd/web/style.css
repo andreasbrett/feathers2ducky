@@ -86,6 +86,13 @@ hr {
 	padding: 10px;
 }
 
+#usb_hid_connection {
+    display: none;
+	color: red;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
 #content {
 	grid-area: content;
 	background-color: hsl(230, 0%, 90%);

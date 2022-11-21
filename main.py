@@ -23,6 +23,7 @@ import time
 
 import ampule
 import socketpool
+import supervisor
 import storage
 import usb_hid
 import wifi
@@ -736,7 +737,8 @@ def light_set(request):
                 "available": round(100 * mem_available / mem_total, 2),
                 "used": round(100 * mem_used / mem_total, 2),
             },
-        }
+        },
+        "usb_connected": supervisor.runtime.usb_connected
     }
 
     return (200, headersJson, json.dumps(result))
@@ -838,6 +840,18 @@ def light_set(request):
 @ampule.route("/api/deletePayload", method="POST")
 def light_set(request):
     return (200, headersJson, "")
+
+
+@ampule.route("/api/checkUsbHid")
+def light_set(request):
+
+    if supervisor.runtime.usb_connected:
+        kbd = Keyboard(usb_hid.devices)
+        mouse = Mouse(usb_hid.devices)
+        cc = ConsumerControl(usb_hid.devices)
+        loadLocale(config["locale"])
+
+    return (200, headersJson, json.dumps({ "result": supervisor.runtime.usb_connected }))
 
 
 # spawn or connect to Wifi Access Point
@@ -969,15 +983,8 @@ def importDisplay():
 # dynamically import display lib (if enabled)
 displayTextLine = importDisplay()
 
-# set up keyboard + mouse
-displayTextLine("Setting up HID...", clear=True)
-kbd = Keyboard(usb_hid.devices)
-mouse = Mouse(usb_hid.devices)
-cc = ConsumerControl(usb_hid.devices)
-loadLocale(config["locale"])
-
 # set up LED
-displayTextLine("Setting up LED...")
+displayTextLine("Setting up LED...", clear=True)
 led = DigitalInOut(LED)
 led.direction = Direction.OUTPUT
 
@@ -987,31 +994,60 @@ psychoMouse = False
 delayCounter = 0
 duckyScriptResult = ""
 
-# sleep at the start to allow the device to be recognized by the host computer
-time.sleep(config["initialSleep"] / 1000)
+# wait for USB mount
+displayTextLine("Waiting for USB...")
+usbWaitCounter = 1
+while (not supervisor.runtime.usb_connected) and (usbWaitCounter <= config["usbConnection"]["waitCycles"]):
+    displayTextLine(f" --> {usbWaitCounter} / {config["usbConnection"]["waitCycles"]}", 2)
+    time.sleep(config["usbConnection"]["waitDelay"] / 1000)
+    usbWaitCounter += 1
 
-# check IO11/IO12/IO13/IO14/IO15/IO16/IO17 for run mode
-displayTextLine("Checking PINs...")
-if isPinGrounded(IO11):
-    processDuckyScript(config["payloads"]["IO11"])
-elif isPinGrounded(IO12):
-    processDuckyScript(config["payloads"]["IO12"])
-elif isPinGrounded(IO13):
-    processDuckyScript(config["payloads"]["IO13"])
-elif isPinGrounded(IO14):
-    processDuckyScript(config["payloads"]["IO14"])
-elif isPinGrounded(IO15):
-    processDuckyScript(config["payloads"]["IO15"])
-elif isPinGrounded(IO16):
-    processDuckyScript(config["payloads"]["IO16"])
-elif isPinGrounded(IO17):
-    mouseJigglerLoop()
+# no USB HID device for quite some time => start the webserver (if enabled)
+if usbWaitCounter >= config["usbConnection"]["waitCycles"]:
+    displayTextLine(" -> timed out!", 2)
+    time.sleep(2)
+    displayTextLine("", 2, clear=True)
+
+    # run web server
+    displayTextLine("Starting Webserver...")
+    if config["wifi"]["mode"] != "off":
+        runWebserver()
+
+# normal mode
 else:
-    print(
-        "You're in setup mode. Update your payload(s) and ground the corresponding pin (IO11-IO16) to run one of them afterwards."
-    )
 
-# run web server
-displayTextLine("Starting Webserver...")
-if config["wifi"]["mode"] != "off":
-    runWebserver()
+    # set up keyboard + mouse
+    displayTextLine("Setting up HID...")
+    kbd = Keyboard(usb_hid.devices)
+    mouse = Mouse(usb_hid.devices)
+    cc = ConsumerControl(usb_hid.devices)
+    loadLocale(config["locale"])
+
+    # sleep at the start to allow the device to be recognized by the host computer
+    time.sleep(config["initialSleep"] / 1000)
+
+    # check IO11/IO12/IO13/IO14/IO15/IO16/IO17 for run mode
+    displayTextLine("Checking PINs...")
+    if isPinGrounded(IO11):
+        processDuckyScript(config["payloads"]["IO11"])
+    elif isPinGrounded(IO12):
+        processDuckyScript(config["payloads"]["IO12"])
+    elif isPinGrounded(IO13):
+        processDuckyScript(config["payloads"]["IO13"])
+    elif isPinGrounded(IO14):
+        processDuckyScript(config["payloads"]["IO14"])
+    elif isPinGrounded(IO15):
+        processDuckyScript(config["payloads"]["IO15"])
+    elif isPinGrounded(IO16):
+        processDuckyScript(config["payloads"]["IO16"])
+    elif isPinGrounded(IO17):
+        mouseJigglerLoop()
+    else:
+        print(
+            "You're in setup mode. Update your payload(s) and ground the corresponding pin (IO11-IO16) to run one of them afterwards."
+        )
+
+    # run web server
+    displayTextLine("Starting Webserver...")
+    if config["wifi"]["mode"] != "off":
+        runWebserver()

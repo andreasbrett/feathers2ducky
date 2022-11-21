@@ -59,7 +59,7 @@ config = {
         "width": 128,
         "height": 32,
         # reset pin
-        "resetPin": board.IO18
+        "resetPin": board.IO18,
     },
     # initial sleep to allow device to be recognized by the host computer (in milliseconds)
     "initialSleep": 500,
@@ -67,6 +67,13 @@ config = {
     "locale": "DE",
     # default delay between processing duckyscript lines (in milliseconds)
     "defaultDelay": 0,
+    # USB connection settings
+    "usbConnection": {
+        # time to wait between each re-check (in milliseconds)
+        "waitDelay": 500,
+        # how many re-checks to perform before starting webserver (if enabled)
+        "waitCycles": 60,
+    },
     # stealth mode settings
     "stealth": {
         # disable CDC module (needed for serial console = debugging)
